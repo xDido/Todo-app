@@ -1,45 +1,55 @@
+import useTheme from '@/hooks/useTheme';
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+const TabsLayout = () => {
+    const { colors } = useTheme();
+    return (
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: colors.primary,
+                tabBarInactiveTintColor: colors.textMuted,
+                tabBarStyle: {
+                    backgroundColor: colors.surface,
+                    borderTopWidth: 1,
+                    borderTopColor: '#eee',
+                    shadowColor: '#000',
+                    height: 90,
+                    paddingBottom: 10,
+                    paddingTop: 10,
+                    shadowOffset: {
+                        width: 0,
+                        height: 2
+                    },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 2,
+                    elevation: 2
+                },
+                tabBarLabelStyle: {
+                    fontSize: 12,
+                    marginBottom: 6,
+                    fontWeight: '600',
+                
+                },
+                headerShown: false
+            }}
+        >
+            <Tabs.Screen
+                name="settings"
+                options={{
+                    title: "Settings",
+                    tabBarIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />
+                }}
+            />
+            <Tabs.Screen
+                name="index"
+                options={{
+                    title: "Todos",
+                    tabBarIcon: ({ color, size }) => <Ionicons name='flash-outline' size={size} color={color} />
+                }}
+            />
+        </Tabs>
+    );
+};
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
-}
+export default TabsLayout;
