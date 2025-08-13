@@ -1,10 +1,13 @@
 import { createHomeStyles } from "@/assets/styles/home.styles";
+import Header from "@/component/Header";
 import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
 import { useMutation, useQuery } from "convex/react";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+// Make sure the Header component exists at the specified path and use the correct extension if needed
+
 export default function Index() {
   const { toggleDarkMode, colors } = useTheme();
   const todos = useQuery(api.todos.getTodos);
@@ -15,7 +18,6 @@ export default function Index() {
     <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
       <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homeStyles.safeArea}>
-
         <TouchableOpacity
           onPress={() => {
             toggleDarkMode();
@@ -23,6 +25,7 @@ export default function Index() {
         >
           <Text>Press Me</Text>
         </TouchableOpacity>
+        <Header />
         <TouchableOpacity
           onPress={() => {
             createTodo({ text: "walk the dog" });
