@@ -1,57 +1,42 @@
+import { createHomeStyles } from "@/assets/styles/home.styles";
 import { api } from "@/convex/_generated/api";
-import useTheme, { ColorScheme } from "@/hooks/useTheme";
+import useTheme from "@/hooks/useTheme";
 import { useMutation, useQuery } from "convex/react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   const { toggleDarkMode, colors } = useTheme();
   const todos = useQuery(api.todos.getTodos);
-  console.log(todos);
   const createTodo = useMutation(api.todos.createTodo);
   const clearAllTodos = useMutation(api.todos.deleteAllTodos);
-  const Styles = createStyles(colors);
+  const homeStyles = createHomeStyles(colors);
   return (
-    <View
-      style={Styles.container}
-    >
+    <LinearGradient colors={colors.gradients.background} style={homeStyles.container}>
+      <StatusBar barStyle={colors.statusBarStyle} />
+      <SafeAreaView style={homeStyles.safeArea}>
 
-      <TouchableOpacity
-        onPress={() => {
-          toggleDarkMode();
-        }}
-      >
-        <Text>Press Me</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          createTodo({ text: "walk the dog" });
-        }}
-      >
-        <Text>add a new Todo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          clearAllTodos();
-        }}
-      >
-        <Text>clear all Todos</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          onPress={() => {
+            toggleDarkMode();
+          }}
+        >
+          <Text>Press Me</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            createTodo({ text: "walk the dog" });
+          }}
+        >
+          <Text>add a new Todo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            clearAllTodos();
+          }}
+        >
+          <Text>clear all Todos</Text>
+        </TouchableOpacity>
+      </SafeAreaView></LinearGradient>
   );
-}
-const createStyles = (colors: ColorScheme) => {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: colors.bg,
-      gap: 10,
-    },
-    text: {
-      fontSize: 16,
-      color: "#333",
-    },
-  });
-  return styles;
 }
