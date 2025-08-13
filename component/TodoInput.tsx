@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useMutation } from 'convex/react';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from 'react';
-import { TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, TextInput, TouchableOpacity, View } from 'react-native';
 
 const TodoInput = () => {
     const { colors } = useTheme();
@@ -15,8 +15,13 @@ const TodoInput = () => {
 
     const handleAdd = async () => {
         if (todoText.trim()) {
-            await addTodo({ text: todoText.trim() });
-            setTodoText('');
+            try {
+                await addTodo({ text: todoText.trim() });
+                setTodoText('');
+            } catch (error) {
+                console.error("Error adding todo:", error);
+                Alert.alert("Error", "Error adding todo:");
+            }
         }
     };
 
