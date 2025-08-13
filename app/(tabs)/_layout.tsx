@@ -29,7 +29,7 @@ const TabsLayout = () => {
                     fontSize: 12,
                     marginBottom: 6,
                     fontWeight: '600',
-                
+
                 },
                 headerShown: false
             }}
