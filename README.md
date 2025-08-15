@@ -41,11 +41,6 @@ npm run reset-project
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
 
-![WhatsApp Image 2025-08-15 at 2 02 57 PM](https://github.com/user-attachments/assets/fb3900f8-ed76-4821-84bb-86c335c133e8)
-
-
-
-
 Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
