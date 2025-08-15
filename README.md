@@ -2,6 +2,8 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+![WhatsApp Image 2025-08-15 at 2 02 57 PM (1)](https://github.com/user-attachments/assets/29eaa510-e1ad-4cfc-a38a-1f858d1ccc3a)
+
 ## Get started
 
 1. Install dependencies
@@ -38,14 +40,11 @@ npm run reset-project
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+![WhatsApp Image 2025-08-15 at 2 02 57 PM](https://github.com/user-attachments/assets/fb3900f8-ed76-4821-84bb-86c335c133e8)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
+
 
 Join our community of developers creating universal apps.
 
